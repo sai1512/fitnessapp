@@ -1,6 +1,13 @@
 <script setup>
 import Grid from '../Grid.vue';
     import { gymHealthFacts } from '../../utils';
+
+    const props = defineProps({
+        handleSelectWorkout: {
+            type: Function,
+            required: true
+        }
+    })
     
     //generate random number between 0 and length of gymHealthFacts array
     const randomNumber = Math.floor(Math.random() * gymHealthFacts.length);
@@ -18,7 +25,7 @@ import Grid from '../Grid.vue';
         <div>
             <button>Start Workout &rarr;</button>
         </div>
-        <Grid />
+        <Grid v-bind="props" />
     </section>
 </template>
 
